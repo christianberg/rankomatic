@@ -12,6 +12,9 @@ RUN wget --quiet -O - https://www.postgresql.org/media/keys/ACCC4CF8.asc | apt-k
 RUN apt-get update
 RUN apt-get install -y postgresql-9.3
 
+ADD create_database.sql /tmp/create_database.sql
+
 USER postgres
-CMD ["/usr/lib/postgresql/9.3/bin/postgres", "-c", "config_file=/etc/postgresql/9.3/main/postgresql.conf"]
+RUN /usr/lib/postgresql/9.3/bin/postgres --single --config_file=/etc/postgresql/9.3/main/postgresql.conf < /tmp/create_database.sql
+CMD ["/usr/lib/postgresql/9.3/bin/postgres", "--config_file=/etc/postgresql/9.3/main/postgresql.conf"]
 
