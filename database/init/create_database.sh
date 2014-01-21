@@ -1,4 +1,7 @@
 #!/bin/bash
-chown postgres:postgres $PGDATA
-su -c /usr/lib/postgresql/9.3/bin/initdb postgres
-su -c "/usr/lib/postgresql/9.3/bin/postgres --single" postgres < /tmp/create_database.sql
+/usr/lib/postgresql/9.3/bin/initdb
+/usr/lib/postgresql/9.3/bin/postgres --single <<EOF
+CREATE USER rankomatic_admin PASSWORD '${CONF_ADMIN_DB_PASSWORD}';
+CREATE USER rankomatic PASSWORD '${CONF_USER_DB_PASSWORD}';
+CREATE DATABASE rankomatic OWNER rankomatic_admin;
+EOF
