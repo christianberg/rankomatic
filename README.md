@@ -5,29 +5,29 @@ Work in progress.
 
 ## Development Setup (on Mac OS X)
 
-* Install VirtualBox
-* Install Docker client binary from
-  http://test.docker.io/builds/Darwin/x86_64/docker-0.7.6.tgz
-  (put it somewhere on your PATH)
-* Start boot2docker VM:
+* Install [VirtualBox](https://www.virtualbox.org/)
+* Install [boot2docker](https://github.com/boot2docker/boot2docker): `brew install boot2docker`
+* Install [Docker](https://www.docker.io/) client binary: `brew install docker` 
+* Initialize and start boot2docker VM:
 
 ```
-  $ cd vm
-  $ ./boot2docker init
-  $ ./boot2docker up
+  $ boot2docker init
+  $ boot2docker up
 ```
 
 Now you can use the local Docker client to manage containers running
 inside the VM:
 
 ```
+$ export DOCKER_HOST=tcp://localhost:4243
 $ docker version
-Client version: 0.7.6
-Go version (client): go1.2
-Git commit (client): bc3b2ec
-Server version: 0.7.5
-Git commit (server): c348c04
+Client version: 0.8.1
+Go version (client): go1.2.1
+Git commit (client): a1598d1
+Server version: 0.8.1
+Git commit (server): a1598d1
 Go version (server): go1.2
+Last stable version: 0.8.1
 ```
 
 ## Copyright and License
@@ -35,7 +35,3 @@ Go version (server): go1.2
 © 2014 Christian Berg
 
 Published under the MIT License (see the file LICENSE).
-
-The boot2docker script is copied from
-https://github.com/steeve/boot2docker and licensed under the Apache
-License 2.0.
