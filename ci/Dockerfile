@@ -23,6 +23,8 @@ RUN wget -q http://mirrors.jenkins-ci.org/plugins/git-client/1.6.3/git-client.hp
 RUN wget -q http://mirrors.jenkins-ci.org/plugins/job-dsl/1.21/job-dsl.hpi
 RUN wget -q http://mirrors.jenkins-ci.org/plugins/scm-api/0.2/scm-api.hpi
 
+ADD seed-job.xml /jenkins/jobs/seed/config.xml
+
 ENV JENKINS_HOME /jenkins
 EXPOSE 8080
 CMD ["java", "-Xmx512M", "-jar", "/jenkins/jenkins.war"]
