@@ -18,8 +18,9 @@ RUN wget -q http://mirrors.jenkins-ci.org/war/1.553/jenkins.war
 
 RUN mkdir /jenkins/plugins
 WORKDIR /jenkins/plugins
-RUN wget -q http://mirrors.jenkins-ci.org/plugins/git/2.0.3/git.hpi
+RUN wget -q http://mirrors.jenkins-ci.org/plugins/git/2.0.4/git.hpi
 RUN wget -q http://mirrors.jenkins-ci.org/plugins/git-client/1.6.3/git-client.hpi
+RUN wget -q http://mirrors.jenkins-ci.org/plugins/job-dsl/1.21/job-dsl.hpi
 RUN wget -q http://mirrors.jenkins-ci.org/plugins/scm-api/0.2/scm-api.hpi
 
 ENV JENKINS_HOME /jenkins
